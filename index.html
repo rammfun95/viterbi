@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Viterbi algorithm</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Viterbi Algotirhm</a>
+</nav>
+
+<main role="main">
+
+    <div class="jumbotron">
+        <div class="container">
+            <h2>JS implementation of Viterbi algorithm</h2>
+            <p>Enter size of observations space and states</p>
+            <form class="form-inline" id="initForm">
+                <input class="form-control col-sm-2" id="varN" type="number" min="1" required placeholder="Space Size">
+                <input class="form-control col-sm-2" id="varK" type="number" min="1" required placeholder="States">
+                <input class="form-control col-sm-2" id="obsField" type="text" required placeholder="Observations">
+                <button type="submit" class="btn btn-primary form-control-sm">Start</button>
+            </form>
+        </div>
+    </div>
+
+    <form class="toggle-content" id="matrixForm">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>&pi;</h2>
+                    <div id="vectorPi">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h2>Matrix A</h2>
+                    <div id="matrixA">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h2>Matrix B</h2>
+                    <div id="matrixB">
+                    </div>
+                </div>
+            </div>
+
+            <div class="starter-template">
+                <button type="submit" class="btn btn-success ">Calculate</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="toggle-content" id="resultBlock">
+    </div>
+</main>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
