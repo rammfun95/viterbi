@@ -14,23 +14,6 @@ document.addEventListener('DOMContentLoaded',  () => {
     initForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        /*
-        const Y = [0, 1, 2];
-        const pi = [0.6, 0.4];
-        const  A = [
-            [0.7, 0.3],
-            [0.4, 0.6]
-        ];
-        const B = [
-            [0.5, 0.4, 0.1],
-            [0.1, 0.3, 0.6]
-        ];
-        const res = Viterbi(Y, pi, A, B);
-
-        resultBlock.innerText = res;
-        resultBlock.classList.add('is-visible');
-        */
-
         const N = parseInt(fieldN.value);
         const K = parseInt(fieldK.value);
 
@@ -52,11 +35,7 @@ document.addEventListener('DOMContentLoaded',  () => {
             getMatrixValues(matrixB)
         );
 
-        alert(result);
-
         resultBlock.innerText = result;
-
-        matrixForm.classList.remove('is-visible');
         resultBlock.classList.add('is-visible');
     });
 
