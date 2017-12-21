@@ -50,14 +50,17 @@ document.addEventListener('DOMContentLoaded',  () => {
         for (let i = 0; i < K; i++) {
             TState[i][0] = pi[i] * B[i][Y[0]];
             TIndex[i][0] = 0;
-            output.push(`T[${i + 1}][1] = ` + TState[i][0].toPrecision(5));
+            output.push(`TState[${i + 1}, 1] = pi[${i + 1}] * B[${i + 1}, Y[1]]`);
+            output.push(`TState[${i + 1}, 1] = ` + TState[i][0].toPrecision(5));
+            output.push(`TIndex[${i + 1}, 1] = 0`);
+            output.push('');
         }
         output.push("------------------------------");
 
 
         for (let i = 1; i < T; i++) {
             for (let j = 0; j < K; j++) {
-                let message = `TState[${j + 1}][${i + 1}] = max(`;
+                let message = `TState[${j + 1}, ${i + 1}] = max(`;
                 for (let k = 0; k < K; k++) {
                     const cur = TState[k][i - 1] * A[k][j] * B[j][Y[i]];
                     if (TIndex[j][i] === -1 || cur > TState[j][i]) {
@@ -68,11 +71,19 @@ document.addEventListener('DOMContentLoaded',  () => {
                 }
 
                 message += ') = ' + TState[j][i].toPrecision(5);
+                output.push(`TState[${j + 1}, ${i + 1}] = max k (TState[k, ${i}] * A[k, ${j + 1}] * B[${j + 1}, Y[${i + 1}]]`);
                 output.push(message);
-                output.push(`TIndex[${j + 1}][${i + 1}] = ${TIndex[j][i] + 1}`)
+                output.push(`TIndex[${j + 1}, ${i + 1}] = argmax k (TState[k, ${i}] * A[k, ${j + 1}] * B[${j + 1}, Y[${i + 1}]]`);
+                output.push(`TIndex[${j + 1}, ${i + 1}] = ${TIndex[j][i] + 1}`)
+                output.push('');
             }
             output.push("------------------------------");
         }
+
+        output.push('X[T] = argmax k (TState[k, T])');
+        output.push('for i = T downto 2')
+        output.push('   X[i - 1] = TIndex[X[i], i]');
+        output.push("------------------------------");
 
         for (let k = 0; k < K; k++) {
             if (X[T - 1] === -1 || TState[k][T - 1] > TState[X[T - 1]][T - 1]) {
